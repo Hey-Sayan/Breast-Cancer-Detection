@@ -13,6 +13,13 @@ with open('scaler.pickle', 'rb') as f:
 # Load LSTM model
 model = load_model('model.h5')
 
+# Optional: compile to remove metrics warning (not required for inference)
+model.compile(
+    optimizer="adam",
+    loss="binary_crossentropy",
+    metrics=["accuracy"]
+)
+
 # Home route
 @app.route('/')
 def home():
